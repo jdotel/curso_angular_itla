@@ -1,12 +1,89 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * Tu primer cambio ** * * * * * * * * * * -->
+<a href="#contenido">Saltar al contenido</a>
 
+<header>
+  <link rel="stylesheet" href="../styles.css">
+  <h1>Panel de actividades</h1>
+  <nav aria-label="Principal">
+    <ul>
+      <li><a href="#resumen">Resumen</a></li>
+      <li><a href="#actividades">Actividades</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="contenido">
+  <section aria-labelledby="resumen-titulo">
+    <h2 id="resumen-titulo">Resumen</h2>
+    <ul>
+      <li><strong>3</strong> pendientes</li>
+      <li><strong>1</strong> en progreso</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="actividades-titulo">
+    <h2 id="actividades-titulo">Actividades recientes</h2>
+    <article>
+      <h3>Preparar estructura HTML</h3>
+      <p>Definir las regiones de la página antes de darles estilo.</p>
+    </article>
+  </section>
+  <!--Elegir botones, campos y etiquetas nativos según la acción -->
+  <section aria-labelledby="filtros-titulo">
+  <h2 id="filtros-titulo">Buscar y filtrar</h2>
+
+  <form>
+    <div>
+      <label for="buscar">Buscar actividad</label>
+      <input type="search" id="buscar" name="buscar">
+    </div>
+
+    <div>
+      <label for="estado">Estado</label>
+      <select id="estado" name="estado">
+        <option value="">Todos</option>
+        <option value="pendiente">Pendiente</option>
+        <option value="completada">Completada</option>
+      </select>
+    </div>
+
+    <button type="submit">Aplicar filtros</button>
+  </form>
+</section>
+<section class="panel" aria-labelledby="resumen-titulo"></section>
+
+<a href="#nueva-actividad">Nueva actividad</a>
+
+</main>
+<footer>
+  <p>Panel de actividades · Curso de Angular</p>
+</footer>
+
+<!--
+<main>
+  <div>
+   <h1>Panel de actividades</h1>
+  </div>
+  <p>Organiza tus próximas acciones.</p>
+  <a href="#actividades">Ver actividades recientes</a>
+  <h2>Resumen</h2>
+    <ul>
+      <li><strong>3</strong> pendientes</li>
+      <li><strong>1</strong> en progreso</li>
+      <li><strong>5</strong> completadas</li>
+    </ul>
+  <h2 id="actividades">Actividades recientes</h2>
+  <ol>
+    <li>Preparar estructura HTML</li>
+    <li>Revisar el informe trimestral</li>
+  </ol>
+</main>
+
+<router-outlet />
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!--
+  This is the main HTML file for your Angular application. You can edit this file to change
 <style>
   :host {
     --bright-blue: oklch(51.01% 0.274 263.83);
@@ -331,7 +408,7 @@
     </div>
   </div>
 </main>
-
+-->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
@@ -339,6 +416,3 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-
-<router-outlet />
