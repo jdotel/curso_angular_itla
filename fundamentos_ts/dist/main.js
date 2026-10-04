@@ -1,18 +1,35 @@
 "use strict";
+//Clasificar una actividad
+const estado = "pendiente";
+const prioridad = "alta";
+const diasRestantes = 0;
+const estaPendiente = estado === "pendiente";
+const esUrgente = prioridad === "alta";
+const venceHoy = diasRestantes === 0;
+const requiereAtencion = estaPendiente && (esUrgente || venceHoy);
+const sePuedeArchivar = !estaPendiente && !venceHoy;
+console.log(estaPendiente);
+console.log(venceHoy);
+console.log(requiereAtencion);
+console.log(sePuedeArchivar);
 //Definir y llamar funciones con parámetros y retorno
-function calcularPendientes(total, completadas) {
-    return total - completadas;
+/* function calcularPendientes(total: number, completadas: number): number {
+  return total - completadas;
 }
-function calcularPorcentaje(parte, total) {
-    return (parte / total) * 100;
+
+function calcularPorcentaje(parte: number, total: number): number {
+  return (parte / total) * 100;
 }
+
 const total = 8;
 const completadas = 3;
+
 const pendientes = calcularPendientes(total, completadas);
 const porcentaje = calcularPorcentaje(pendientes, total);
+
 console.log(pendientes);
 console.log(porcentaje.toFixed(1));
-console.log(calcularPendientes(2, 2));
+console.log(calcularPendientes(2, 2)); */
 //revision de impresion por consola de variables y tipos de datos
 function sumar(a, b) {
     return a + b;
