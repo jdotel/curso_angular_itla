@@ -1,28 +1,98 @@
-function aTexto(actividad) {
-    return JSON.stringify(actividad);
+"use strict";
+//Esperar una promesa con async y await
+function cargar(nombre, exito) {
+    return new Promise((cumplir, rechazar) => {
+        setTimeout(() => {
+            if (exito) {
+                cumplir(`${nombre} listo`);
+            }
+            else {
+                rechazar(new Error(`${nombre} falló`));
+            }
+        }, 300);
+    });
 }
-function desdeTexto(texto) {
-    const valor = JSON.parse(texto);
-    if (typeof valor !== "object" || valor === null) {
-        return undefined;
+async function iniciar() {
+    console.log("1. inicio");
+    try {
+        const [actividades, usuarios] = await Promise.all([
+            cargar("actividades", true),
+            cargar("usuarios", true),
+        ]);
+        console.log(`2. ${actividades}`);
+        console.log(`3. ${usuarios}`);
+        await cargar("comentarios", false);
+        console.log("no se llega aquí");
     }
-    if (!("id" in valor) || !("titulo" in valor) || !("estado" in valor)) {
-        return undefined;
+    catch (error) {
+        const mensaje = error instanceof Error ? error.message : "desconocido";
+        console.log(`4. ${mensaje}`);
     }
-    if (typeof valor.id !== "number" || typeof valor.titulo !== "string") {
-        return undefined;
+    finally {
+        console.log("5. terminado");
     }
-    return valor;
 }
-const original = {
-    id: 1,
-    titulo: "Practicar TypeScript",
-    estado: "pendiente",
+iniciar();
+//Reconocer los estados de una promesa
+/* function cargarTitulo(exito: boolean): Promise<string> {
+  return new Promise((cumplir, rechazar) => {
+    setTimeout(() => {
+      if (exito) {
+        cumplir("Practicar TypeScript");
+      } else {
+        rechazar(new Error("No se pudo cargar"));
+      }
+    }, 300);
+  });
+}
+
+console.log("1. inicio");
+
+cargarTitulo(true)
+  .then((titulo) => console.log(`3. ${titulo}`))
+  .catch((error: unknown) => console.log("3. error"));
+
+cargarTitulo(false)
+  .then((titulo) => console.log(`4. ${titulo}`))
+  .catch((error: unknown) => {
+    const mensaje = error instanceof Error ? error.message : "desconocido";
+    console.log(`4. ${mensaje}`);
+  });
+
+console.log("2. continúa"); */
+//Convertir datos entre objetos y JSON
+/* import type { Actividad } from "./tipos.js";
+
+function aTexto(actividad: Actividad): string {
+  return JSON.stringify(actividad);
+}
+
+function desdeTexto(texto: string): Actividad | undefined {
+  const valor: unknown = JSON.parse(texto);
+
+  if (typeof valor !== "object" || valor === null) {
+    return undefined;
+  }
+  if (!("id" in valor) || !("titulo" in valor) || !("estado" in valor)) {
+    return undefined;
+  }
+  if (typeof valor.id !== "number" || typeof valor.titulo !== "string") {
+    return undefined;
+  }
+
+  return valor as Actividad;
+}
+
+const original: Actividad = {
+  id: 1,
+  titulo: "Practicar TypeScript",
+  estado: "pendiente",
 };
 const texto = aTexto(original);
+
 console.log(texto);
 console.log(desdeTexto(texto)?.titulo ?? "Datos inválidos");
-console.log(desdeTexto('{"id":"uno"}')?.titulo ?? "Datos inválidos");
+console.log(desdeTexto('{"id":"uno"}')?.titulo ?? "Datos inválidos"); */
 //Conectar módulos mediante exportaciones e importaciones
 /* import type { Actividad } from "./tipos.js";
 import { crearEtiqueta } from "./etiquetas.js";
@@ -272,7 +342,6 @@ function sumar(a, b) {
     console.log("sumado");
 }
 console.log(sumar(2, 3));
-export {};
 /* const titulo = "Preparar estructura HTML";
 
 let cantidadPendiente = 3;
