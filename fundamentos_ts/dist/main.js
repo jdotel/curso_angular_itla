@@ -1,15 +1,40 @@
 "use strict";
-//Comparar inferencia y anotaciones explícitas
-const titulo = "Practicar TypeScript";
-const prioridades = [];
-function crearEtiqueta(texto, cantidad) {
-    return `${texto}: ${cantidad}`;
+function etiquetaEstado(estado) {
+    if (estado === "en_progreso") {
+        return "En progreso";
+    }
+    if (estado === "completada") {
+        return "Completada";
+    }
+    return "Pendiente";
 }
+function buscarEstado(estados, objetivo) {
+    return estados.find((estado) => estado === objetivo);
+}
+const estados = ["pendiente", "completada"];
+console.log(etiquetaEstado("en_progreso"));
+console.log(etiquetaEstado(estados[0] ?? "pendiente"));
+const encontrado = buscarEstado(estados, "en_progreso");
+if (encontrado === undefined) {
+    console.log("Ninguna en ese estado");
+}
+else {
+    console.log(etiquetaEstado(encontrado));
+}
+//Comparar inferencia y anotaciones explícitas
+/* const titulo = "Practicar TypeScript";
+const prioridades: string[] = [];
+
+function crearEtiqueta(texto: string, cantidad: number): string {
+  return `${texto}: ${cantidad}`;
+}
+
 prioridades.push("alta");
 prioridades.push("media");
+
 console.log(titulo);
 console.log(crearEtiqueta("Pendientes", prioridades.length));
-console.log(prioridades);
+console.log(prioridades); */
 //Representar objetos y actualizarlos mediante copias con spread
 /* const actividad = {
   id: 1,
