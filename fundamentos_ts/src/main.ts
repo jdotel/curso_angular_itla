@@ -1,5 +1,34 @@
+//Reconocer los estados de una promesa
+function cargarTitulo(exito: boolean): Promise<string> {
+  return new Promise((cumplir, rechazar) => {
+    setTimeout(() => {
+      if (exito) {
+        cumplir("Practicar TypeScript");
+      } else {
+        rechazar(new Error("No se pudo cargar"));
+      }
+    }, 300);
+  });
+}
+
+console.log("1. inicio");
+
+cargarTitulo(true)
+  .then((titulo) => console.log(`3. ${titulo}`))
+  .catch((error: unknown) => console.log("3. error"));
+
+cargarTitulo(false)
+  .then((titulo) => console.log(`4. ${titulo}`))
+  .catch((error: unknown) => {
+    const mensaje = error instanceof Error ? error.message : "desconocido";
+    console.log(`4. ${mensaje}`);
+  });
+
+console.log("2. continúa");
+
+
 //Convertir datos entre objetos y JSON
-import type { Actividad } from "./tipos.js";
+/* import type { Actividad } from "./tipos.js";
 
 function aTexto(actividad: Actividad): string {
   return JSON.stringify(actividad);
@@ -30,7 +59,7 @@ const texto = aTexto(original);
 
 console.log(texto);
 console.log(desdeTexto(texto)?.titulo ?? "Datos inválidos");
-console.log(desdeTexto('{"id":"uno"}')?.titulo ?? "Datos inválidos");
+console.log(desdeTexto('{"id":"uno"}')?.titulo ?? "Datos inválidos"); */
 
 //Conectar módulos mediante exportaciones e importaciones
 /* import type { Actividad } from "./tipos.js";
