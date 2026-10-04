@@ -1,5 +1,8 @@
+//Convertir datos entre objetos y JSON
+
+
 //Conectar módulos mediante exportaciones e importaciones
-import type { Actividad } from "./tipos.js";
+/* import type { Actividad } from "./tipos.js";
 import { crearEtiqueta } from "./etiquetas.js";
 
 const actividades: Actividad[] = [
@@ -10,7 +13,7 @@ const actividades: Actividad[] = [
 for (const actividad of actividades) {
   console.log(crearEtiqueta(actividad));
 }
-
+ */
 
 //Leer clases, constructores, métodos y visibilidad necesaria para Angular
 /* type EstadoActividad = "pendiente" | "completada";
