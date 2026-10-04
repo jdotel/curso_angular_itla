@@ -1,25 +1,53 @@
 "use strict";
+//Representar objetos y actualizarlos mediante copias con spread
+const actividad = {
+    id: 1,
+    titulo: "Practicar TypeScript",
+    estado: "pendiente",
+};
+const actualizada = { ...actividad, estado: "completada" };
+console.log(actividad.estado);
+console.log(actualizada.estado);
+console.log(actividad === actualizada);
+console.log(actividad.titulo === actualizada.titulo);
+//Buscar, filtrar y transformar con métodos de arreglos
+/* const titulos = ["Revisar HTML", "Practicar TypeScript", "Comprobar foco"];
+
+const encontrado = titulos.find((titulo) => titulo.includes("TypeScript"));
+const largos = titulos.filter((titulo) => titulo.length > 12);
+const etiquetas = titulos.map((titulo) => `Actividad: ${titulo}`);
+
+console.log(encontrado ?? "No encontrado");
+console.log(largos.length);
+console.log(etiquetas);
+console.log(titulos.length);
+
+const sinCoincidencias = titulos.filter((titulo) => titulo.includes("Angular"));
+console.log(sinCoincidencias.length); */
 //Repetir una operación mediante ciclos controlados
 //Contar y clasificar en una pasada
-function resumirEstados(estados) {
-    let pendientes = 0;
-    let completadas = 0;
-    let otras = 0;
-    for (const estado of estados) {
-        if (estado === "pendiente") {
-            pendientes = pendientes + 1;
-        }
-        else if (estado === "completada") {
-            completadas = completadas + 1;
-        }
-        else {
-            otras = otras + 1;
-        }
+/* function resumirEstados(estados: string[]): string {
+  let pendientes = 0;
+  let completadas = 0;
+  let otras = 0;
+
+  for (const estado of estados) {
+    if (estado === "pendiente") {
+      pendientes = pendientes + 1;
+    } else if (estado === "completada") {
+      completadas = completadas + 1;
+    } else {
+      otras = otras + 1;
     }
-    return `${pendientes} pendientes · ${completadas} completadas · ${otras} otras`;
+  }
+
+  return `${pendientes} pendientes · ${completadas} completadas · ${otras} otras`;
 }
-console.log(resumirEstados(["pendiente", "completada", "pendiente", "en progreso"]));
-console.log(resumirEstados([]));
+
+console.log(
+  resumirEstados(["pendiente", "completada", "pendiente", "en progreso"]),
+);
+console.log(resumirEstados([])); */
 //Colecciones y objetos
 /* function obtenerPrimerTitulo(titulos: string[]): string {
   if (titulos.length === 0) {
