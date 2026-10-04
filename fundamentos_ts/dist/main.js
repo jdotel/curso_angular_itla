@@ -1,23 +1,59 @@
 "use strict";
-function describir(actividad) {
-    const descripcion = actividad.descripcion ?? "Sin descripción";
-    return `${actividad.titulo} (${actividad.estado}) · ${descripcion}`;
+class GestorActividades {
+    actividades;
+    constructor(actividades) {
+        this.actividades = actividades;
+    }
+    buscarPorId(id) {
+        return this.actividades.find((actividad) => actividad.id === id);
+    }
+    contarPorEstado(estado) {
+        return this.actividades.filter((actividad) => actividad.estado === estado)
+            .length;
+    }
+    describir() {
+        return `${this.actividades.length} actividades · ${this.contarPorEstado("pendiente")} pendientes`;
+    }
 }
-function marcarCompletada(actividad) {
-    return { ...actividad, estado: "completada" };
-}
-const actividades = [
-    {
-        id: 1,
-        titulo: "Revisar HTML",
-        estado: "completada",
-        descripcion: "Comprobar landmarks",
-    },
+const gestor = new GestorActividades([
+    { id: 1, titulo: "Revisar HTML", estado: "completada" },
     { id: 2, titulo: "Practicar TypeScript", estado: "pendiente" },
+]);
+console.log(gestor.describir());
+console.log(gestor.buscarPorId(2)?.titulo ?? "No encontrada");
+console.log(gestor.buscarPorId(9)?.titulo ?? "No encontrada");
+//Definir alias, interfaces y funciones tipadas para el dominio
+/* type EstadoActividad = "pendiente" | "en_progreso" | "completada";
+
+interface Actividad {
+  readonly id: number;
+  titulo: string;
+  estado: EstadoActividad;
+  descripcion?: string;
+}
+
+function describir(actividad: Actividad): string {
+  const descripcion = actividad.descripcion ?? "Sin descripción";
+  return `${actividad.titulo} (${actividad.estado}) · ${descripcion}`;
+}
+
+function marcarCompletada(actividad: Actividad): Actividad {
+  return { ...actividad, estado: "completada" };
+}
+
+const actividades: Actividad[] = [
+  {
+    id: 1,
+    titulo: "Revisar HTML",
+    estado: "completada",
+    descripcion: "Comprobar landmarks",
+  },
+  { id: 2, titulo: "Practicar TypeScript", estado: "pendiente" },
 ];
-console.log(describir(actividades[0] ?? actividades[1]));
-console.log(describir(marcarCompletada(actividades[1])));
-console.log(actividades[1].estado);
+
+console.log(describir(actividades[0] ?? actividades[1]!));
+console.log(describir(marcarCompletada(actividades[1]!)));
+console.log(actividades[1]!.estado); */
 //Representar alternativas con uniones y ausencia explícita
 /* type EstadoActividad = "pendiente" | "en_progreso" | "completada";
 

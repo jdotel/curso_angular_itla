@@ -1,5 +1,40 @@
+//Leer clases, constructores, métodos y visibilidad necesaria para Angular
+type EstadoActividad = "pendiente" | "completada";
+
+interface Actividad {
+  readonly id: number;
+  titulo: string;
+  estado: EstadoActividad;
+}
+
+class GestorActividades {
+  constructor(private readonly actividades: Actividad[]) {}
+
+  buscarPorId(id: number): Actividad | undefined {
+    return this.actividades.find((actividad) => actividad.id === id);
+  }
+
+  contarPorEstado(estado: EstadoActividad): number {
+    return this.actividades.filter((actividad) => actividad.estado === estado)
+      .length;
+  }
+
+  describir(): string {
+    return `${this.actividades.length} actividades · ${this.contarPorEstado("pendiente")} pendientes`;
+  }
+}
+
+const gestor = new GestorActividades([
+  { id: 1, titulo: "Revisar HTML", estado: "completada" },
+  { id: 2, titulo: "Practicar TypeScript", estado: "pendiente" },
+]);
+
+console.log(gestor.describir());
+console.log(gestor.buscarPorId(2)?.titulo ?? "No encontrada");
+console.log(gestor.buscarPorId(9)?.titulo ?? "No encontrada");
+
 //Definir alias, interfaces y funciones tipadas para el dominio
-type EstadoActividad = "pendiente" | "en_progreso" | "completada";
+/* type EstadoActividad = "pendiente" | "en_progreso" | "completada";
 
 interface Actividad {
   readonly id: number;
@@ -29,7 +64,7 @@ const actividades: Actividad[] = [
 
 console.log(describir(actividades[0] ?? actividades[1]!));
 console.log(describir(marcarCompletada(actividades[1]!)));
-console.log(actividades[1]!.estado);
+console.log(actividades[1]!.estado); */
 
 //Representar alternativas con uniones y ausencia explícita
 /* type EstadoActividad = "pendiente" | "en_progreso" | "completada";
