@@ -1,15 +1,28 @@
 "use strict";
+//Comparar inferencia y anotaciones explícitas
+const titulo = "Practicar TypeScript";
+const prioridades = [];
+function crearEtiqueta(texto, cantidad) {
+    return `${texto}: ${cantidad}`;
+}
+prioridades.push("alta");
+prioridades.push("media");
+console.log(titulo);
+console.log(crearEtiqueta("Pendientes", prioridades.length));
+console.log(prioridades);
 //Representar objetos y actualizarlos mediante copias con spread
-const actividad = {
-    id: 1,
-    titulo: "Practicar TypeScript",
-    estado: "pendiente",
+/* const actividad = {
+  id: 1,
+  titulo: "Practicar TypeScript",
+  estado: "pendiente",
 };
+
 const actualizada = { ...actividad, estado: "completada" };
+
 console.log(actividad.estado);
 console.log(actualizada.estado);
 console.log(actividad === actualizada);
-console.log(actividad.titulo === actualizada.titulo);
+console.log(actividad.titulo === actualizada.titulo); */
 //Buscar, filtrar y transformar con métodos de arreglos
 /* const titulos = ["Revisar HTML", "Practicar TypeScript", "Comprobar foco"];
 
