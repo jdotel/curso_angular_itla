@@ -1,5 +1,19 @@
+//Conectar módulos mediante exportaciones e importaciones
+import type { Actividad } from "./tipos.js";
+import { crearEtiqueta } from "./etiquetas.js";
+
+const actividades: Actividad[] = [
+  { id: 1, titulo: "Revisar HTML", estado: "completada" },
+  { id: 2, titulo: "Practicar TypeScript", estado: "pendiente" },
+];
+
+for (const actividad of actividades) {
+  console.log(crearEtiqueta(actividad));
+}
+
+
 //Leer clases, constructores, métodos y visibilidad necesaria para Angular
-type EstadoActividad = "pendiente" | "completada";
+/* type EstadoActividad = "pendiente" | "completada";
 
 interface Actividad {
   readonly id: number;
@@ -32,7 +46,7 @@ const gestor = new GestorActividades([
 console.log(gestor.describir());
 console.log(gestor.buscarPorId(2)?.titulo ?? "No encontrada");
 console.log(gestor.buscarPorId(9)?.titulo ?? "No encontrada");
-
+ */
 //Definir alias, interfaces y funciones tipadas para el dominio
 /* type EstadoActividad = "pendiente" | "en_progreso" | "completada";
 
