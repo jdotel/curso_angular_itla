@@ -1,5 +1,27 @@
+//Investigar excepciones con consola, depurador y un caso reproducible
+import type { Actividad } from "./tipos.js";
+
+export function describir(actividad: Actividad): string {
+  return `${actividad.titulo} (${actividad.estado})`;
+}
+
+const actividades: Actividad[] = [
+  { id: 1, titulo: "Revisar HTML", estado: "completada" },
+];
+
+function describirPrimera(lista: Actividad[]): string {
+  const primera = lista[0];
+  if (primera === undefined) {
+    return "Sin actividades";
+  }
+  return describir(primera);
+}
+
+console.log(describirPrimera(actividades));
+console.log(describirPrimera([]));
+
 //Esperar una promesa con async y await
-function cargar(nombre: string, exito: boolean): Promise<string> {
+/* function cargar(nombre: string, exito: boolean): Promise<string> {
   return new Promise((cumplir, rechazar) => {
     setTimeout(() => {
       if (exito) {
@@ -32,7 +54,7 @@ async function iniciar(): Promise<void> {
   }
 }
 
-iniciar();
+iniciar(); */
 
 //Reconocer los estados de una promesa
 /* function cargarTitulo(exito: boolean): Promise<string> {
