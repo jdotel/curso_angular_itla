@@ -1,38 +1,53 @@
-"use strict";
+export function describir(actividad) {
+    return `${actividad.titulo} (${actividad.estado})`;
+}
+const actividades = [
+    { id: 1, titulo: "Revisar HTML", estado: "completada" },
+];
+function describirPrimera(lista) {
+    const primera = lista[0];
+    if (primera === undefined) {
+        return "Sin actividades";
+    }
+    return describir(primera);
+}
+console.log(describirPrimera(actividades));
+console.log(describirPrimera([]));
 //Esperar una promesa con async y await
-function cargar(nombre, exito) {
-    return new Promise((cumplir, rechazar) => {
-        setTimeout(() => {
-            if (exito) {
-                cumplir(`${nombre} listo`);
-            }
-            else {
-                rechazar(new Error(`${nombre} falló`));
-            }
-        }, 300);
-    });
+/* function cargar(nombre: string, exito: boolean): Promise<string> {
+  return new Promise((cumplir, rechazar) => {
+    setTimeout(() => {
+      if (exito) {
+        cumplir(`${nombre} listo`);
+      } else {
+        rechazar(new Error(`${nombre} falló`));
+      }
+    }, 300);
+  });
 }
-async function iniciar() {
-    console.log("1. inicio");
-    try {
-        const [actividades, usuarios] = await Promise.all([
-            cargar("actividades", true),
-            cargar("usuarios", true),
-        ]);
-        console.log(`2. ${actividades}`);
-        console.log(`3. ${usuarios}`);
-        await cargar("comentarios", false);
-        console.log("no se llega aquí");
-    }
-    catch (error) {
-        const mensaje = error instanceof Error ? error.message : "desconocido";
-        console.log(`4. ${mensaje}`);
-    }
-    finally {
-        console.log("5. terminado");
-    }
+
+async function iniciar(): Promise<void> {
+  console.log("1. inicio");
+
+  try {
+    const [actividades, usuarios] = await Promise.all([
+      cargar("actividades", true),
+      cargar("usuarios", true),
+    ]);
+    console.log(`2. ${actividades}`);
+    console.log(`3. ${usuarios}`);
+
+    await cargar("comentarios", false);
+    console.log("no se llega aquí");
+  } catch (error: unknown) {
+    const mensaje = error instanceof Error ? error.message : "desconocido";
+    console.log(`4. ${mensaje}`);
+  } finally {
+    console.log("5. terminado");
+  }
 }
-iniciar();
+
+iniciar(); */
 //Reconocer los estados de una promesa
 /* function cargarTitulo(exito: boolean): Promise<string> {
   return new Promise((cumplir, rechazar) => {
