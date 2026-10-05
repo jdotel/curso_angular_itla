@@ -1,7 +1,7 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * Tu primer cambio ** * * * * * * * * * * -->
-<a href="#contenido">Saltar al contenido</a>
-
+<!DOCTYPE html>
+<html lang="es">
 <header>
   <link rel="stylesheet" href="../styles.css">
   <h1>Panel de actividades</h1>
@@ -12,8 +12,12 @@
     </ul>
   </nav>
 </header>
-
+<a href="#contenido">Saltar al contenido</a>
 <main id="contenido">
+  <h1>Panel de actividades</h1>
+  <app-resumen-actividades />
+  <app-lista-actividades />
+
   <section aria-labelledby="resumen-titulo">
     <h2 id="resumen-titulo">Resumen</h2>
     <ul>
@@ -31,31 +35,32 @@
   </section>
   <!--Elegir botones, campos y etiquetas nativos según la acción -->
   <section aria-labelledby="filtros-titulo">
-  <h2 id="filtros-titulo">Buscar y filtrar</h2>
+    <h2 id="filtros-titulo">Buscar y filtrar</h2>
 
-  <form>
-    <div>
-      <label for="buscar">Buscar actividad</label>
-      <input type="search" id="buscar" name="buscar">
-    </div>
+    <form>
+      <div>
+        <label for="buscar">Buscar actividad</label>
+        <input type="search" id="buscar" name="buscar">
+      </div>
 
-    <div>
-      <label for="estado">Estado</label>
-      <select id="estado" name="estado">
-        <option value="">Todos</option>
-        <option value="pendiente">Pendiente</option>
-        <option value="completada">Completada</option>
-      </select>
-    </div>
+      <div>
+        <label for="estado">Estado</label>
+        <select id="estado" name="estado">
+          <option value="">Todos</option>
+          <option value="pendiente">Pendiente</option>
+          <option value="completada">Completada</option>
+        </select>
+      </div>
 
-    <button type="submit">Aplicar filtros</button>
-  </form>
-</section>
-<section class="panel" aria-labelledby="resumen-titulo"></section>
+      <button type="submit">Aplicar filtros</button>
+    </form>
+  </section>
+  <section class="panel" aria-labelledby="resumen-titulo"></section>
 
-<a href="#nueva-actividad">Nueva actividad</a>
+  <a href="#nueva-actividad">Nueva actividad</a>
 
 </main>
+<router-outlet />
 <footer>
   <p>Panel de actividades · Curso de Angular</p>
 </footer>
@@ -81,7 +86,7 @@
 </main>
 
 <router-outlet />
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!--
   This is the main HTML file for your Angular application. You can edit this file to change
 <style>
@@ -416,3 +421,5 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+</html>

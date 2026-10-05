@@ -7,3 +7,4 @@ import { Component } from '@angular/core';
   templateUrl: './resumen-actividades.html',
 })
 export class ResumenActividades {}
+
