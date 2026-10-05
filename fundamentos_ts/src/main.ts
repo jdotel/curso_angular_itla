@@ -1,5 +1,60 @@
+import { actividades } from "./datos.js";
+import { GestorActividades } from "./gestor.js";
+import { crearResumen, presentarResumen } from "./resumen.js";
+import { leerActividadesJson } from "./validacion.js";
+
+async function cargarActividades(): Promise<string> {
+  return Promise.resolve(JSON.stringify(actividades));
+}
+
+async function iniciar(): Promise<void> {
+  try {
+    const texto = await cargarActividades();
+    const actividadesLeidas = leerActividadesJson(texto);
+    const gestor = new GestorActividades(actividadesLeidas);
+    const actualizadas = gestor.completar(3);
+
+    console.log(presentarResumen(crearResumen(actualizadas)));
+  } catch (error: unknown) {
+    const mensaje =
+      error instanceof Error ? error.message : "Error desconocido";
+    console.error(`No fue posible crear el resumen: ${mensaje}`);
+  }
+}
+
+void iniciar();
+
+
+/* import { actividades } from "./datos.js";
+import { GestorActividades } from "./gestor.js";
+import { crearResumen, presentarResumen } from "./resumen.js";
+import { leerActividadesJson } from "./validacion.js";
+
+const texto = JSON.stringify(actividades);
+const actividadesLeidas = leerActividadesJson(texto);
+const gestor = new GestorActividades(actividadesLeidas);
+
+console.log(presentarResumen(crearResumen(gestor.completar(3)))); */
+
+/* import { actividades } from "./datos.js";
+import { GestorActividades } from "./gestor.js";
+import { crearResumen, presentarResumen } from "./resumen.js";
+
+const gestor = new GestorActividades(actividades);
+const actualizadas = gestor.completar(3);
+
+console.log(presentarResumen(crearResumen(actualizadas)));
+console.log("---");
+console.log(presentarResumen(crearResumen(actividades)));
+
+ */
+/* import { actividades } from "./datos.js";
+import { crearResumen, presentarResumen } from "./resumen.js";
+
+console.log(presentarResumen(crearResumen(actividades))); */
+
 //Investigar excepciones con consola, depurador y un caso reproducible
-import type { Actividad } from "./tipos.js";
+/* import type { Actividad } from "./tipos.js";
 
 export function describir(actividad: Actividad): string {
   return `${actividad.titulo} (${actividad.estado})`;
@@ -19,7 +74,7 @@ function describirPrimera(lista: Actividad[]): string {
 
 console.log(describirPrimera(actividades));
 console.log(describirPrimera([]));
-
+ */
 //Esperar una promesa con async y await
 /* function cargar(nombre: string, exito: boolean): Promise<string> {
   return new Promise((cumplir, rechazar) => {
@@ -83,7 +138,6 @@ cargarTitulo(false)
   });
 
 console.log("2. continúa"); */
-
 
 //Convertir datos entre objetos y JSON
 /* import type { Actividad } from "./tipos.js";
@@ -249,8 +303,6 @@ console.log(titulo);
 console.log(crearEtiqueta("Pendientes", prioridades.length));
 console.log(prioridades); */
 
-
-
 //Representar objetos y actualizarlos mediante copias con spread
 /* const actividad = {
   id: 1,
@@ -280,10 +332,8 @@ console.log(titulos.length);
 const sinCoincidencias = titulos.filter((titulo) => titulo.includes("Angular"));
 console.log(sinCoincidencias.length); */
 
-
 //Repetir una operación mediante ciclos controlados
 //Contar y clasificar en una pasada
-
 
 /* function resumirEstados(estados: string[]): string {
   let pendientes = 0;
@@ -307,7 +357,6 @@ console.log(
   resumirEstados(["pendiente", "completada", "pendiente", "en progreso"]),
 );
 console.log(resumirEstados([])); */
-
 
 //Colecciones y objetos
 /* function obtenerPrimerTitulo(titulos: string[]): string {

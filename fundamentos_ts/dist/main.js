@@ -1,18 +1,72 @@
-export function describir(actividad) {
-    return `${actividad.titulo} (${actividad.estado})`;
+import { actividades } from "./datos.js";
+import { GestorActividades } from "./gestor.js";
+import { crearResumen, presentarResumen } from "./resumen.js";
+import { leerActividadesJson } from "./validacion.js";
+async function cargarActividades() {
+    return Promise.resolve(JSON.stringify(actividades));
 }
-const actividades = [
-    { id: 1, titulo: "Revisar HTML", estado: "completada" },
-];
-function describirPrimera(lista) {
-    const primera = lista[0];
-    if (primera === undefined) {
-        return "Sin actividades";
+async function iniciar() {
+    try {
+        const texto = await cargarActividades();
+        const actividadesLeidas = leerActividadesJson(texto);
+        const gestor = new GestorActividades(actividadesLeidas);
+        const actualizadas = gestor.completar(3);
+        console.log(presentarResumen(crearResumen(actualizadas)));
     }
-    return describir(primera);
+    catch (error) {
+        const mensaje = error instanceof Error ? error.message : "Error desconocido";
+        console.error(`No fue posible crear el resumen: ${mensaje}`);
+    }
 }
+void iniciar();
+/* import { actividades } from "./datos.js";
+import { GestorActividades } from "./gestor.js";
+import { crearResumen, presentarResumen } from "./resumen.js";
+import { leerActividadesJson } from "./validacion.js";
+
+const texto = JSON.stringify(actividades);
+const actividadesLeidas = leerActividadesJson(texto);
+const gestor = new GestorActividades(actividadesLeidas);
+
+console.log(presentarResumen(crearResumen(gestor.completar(3)))); */
+/* import { actividades } from "./datos.js";
+import { GestorActividades } from "./gestor.js";
+import { crearResumen, presentarResumen } from "./resumen.js";
+
+const gestor = new GestorActividades(actividades);
+const actualizadas = gestor.completar(3);
+
+console.log(presentarResumen(crearResumen(actualizadas)));
+console.log("---");
+console.log(presentarResumen(crearResumen(actividades)));
+
+ */
+/* import { actividades } from "./datos.js";
+import { crearResumen, presentarResumen } from "./resumen.js";
+
+console.log(presentarResumen(crearResumen(actividades))); */
+//Investigar excepciones con consola, depurador y un caso reproducible
+/* import type { Actividad } from "./tipos.js";
+
+export function describir(actividad: Actividad): string {
+  return `${actividad.titulo} (${actividad.estado})`;
+}
+
+const actividades: Actividad[] = [
+  { id: 1, titulo: "Revisar HTML", estado: "completada" },
+];
+
+function describirPrimera(lista: Actividad[]): string {
+  const primera = lista[0];
+  if (primera === undefined) {
+    return "Sin actividades";
+  }
+  return describir(primera);
+}
+
 console.log(describirPrimera(actividades));
 console.log(describirPrimera([]));
+ */
 //Esperar una promesa con async y await
 /* function cargar(nombre: string, exito: boolean): Promise<string> {
   return new Promise((cumplir, rechazar) => {
